@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
@@ -46,24 +46,24 @@ button:active{transform:translateY(5px)!important;box-shadow:0 1px 0 #543848!imp
 <div class="screen">
 <div id="ask">
 <div class="pixel">♡ MESSAGE FOR YOU ♡</div>
-<h1>妳是不是在想我了？</h1>
+<h1>你是不是在想我了？</h1>
 <div class="buttons">
 <button class="yes" id="yes">❤️ 好想好想你</button>
-<button class="no" id="no">🤔 我才沒有</button>
+<button class="no" id="no">🤔 我才没有</button>
 </div>
 </div>
 <div id="reply" class="hidden">
 <div class="biglove">❤️❤️</div>
-<div class="answer">我也很想妳哦</div>
+<div class="answer">我也很想你哦</div>
 <div class="face">(˶˃ ᵕ ˂˶)♡</div>
-<div class="next">既然想我了……<br>那要不要跟我約會？ 💌</div>
+<div class="next">既然想我了……<br>那要不要跟我约会？ 💌</div>
 </div>
 </div>
 </section>
 </main>
 <script>
 const no=document.getElementById('no'),yes=document.getElementById('yes'),ask=document.getElementById('ask'),reply=document.getElementById('reply');
-const lines=['😗 真的沒有啦','🙄 你少臭美','😳 ……可能一點點','🫣 好啦有一點','🥺 你很煩欸','😤 我就是不按','💗 好想好想你'];
+const lines=['😗 真的没有啦','🙄 你少臭美','😳 ……可能一点点','🫣 好啦有一点','🥺 你很烦欸','😤 我就是不按','💗 好想好想你'];
 let i=0,scale=1;
 no.addEventListener('click',e=>{e.stopPropagation();no.textContent=lines[Math.min(i,lines.length-1)];i++;scale=Math.min(1.42,scale+.07);yes.style.transform='scale('+scale+')';if(i>=lines.length){no.style.opacity='.45';no.style.transform='scale(.88)'}});
 yes.addEventListener('click',()=>{ask.classList.add('hidden');reply.classList.remove('hidden');for(let j=0;j<18;j++)setTimeout(()=>heart(),j*55)});

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#ffd8e8">
+<title>想我了嗎？♡</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;touch-action:manipulation;overscroll-behavior:none}
+body{font-family:"Arial Rounded MT Bold","PingFang TC",system-ui,sans-serif;background:#ffd9e8;color:#4a3040;user-select:none;-webkit-user-select:none}
+body:before{content:"";position:fixed;inset:0;opacity:.18;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:18px 18px;pointer-events:none}
+.wrap{height:100dvh;display:grid;place-items:center;padding:22px}
+.device{position:relative;width:min(92vw,410px);min-height:610px;background:#fff2f7;border:4px solid #543848;border-radius:36px;padding:26px 20px 22px;box-shadow:0 12px 0 #d990ad,0 20px 36px #9d55713a;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.device:before{content:"LOVE MODE";position:absolute;top:18px;font:800 11px/1 monospace;letter-spacing:3px;color:#c06b8c}
+.screen{width:100%;background:#fff;border:3px solid #543848;border-radius:24px;min-height:390px;padding:34px 18px 26px;box-shadow:inset 0 0 0 5px #ffd9e8;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.pixel{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:2px;color:#b46a88;margin-bottom:18px}
+h1{font-size:29px;line-height:1.35;margin:0 0 34px}
+.buttons{width:100%;display:grid;gap:14px}
+button{font:800 17px/1.2 inherit;border:3px solid #543848;border-radius:18px;padding:16px 12px;min-height:58px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .12s ease,box-shadow .12s ease}
+button:active{transform:translateY(5px)!important;box-shadow:0 1px 0 #543848!important}
+.yes{background:#ff78aa;color:white;box-shadow:0 6px 0 #543848}
+.no{background:#fff6fa;color:#543848;box-shadow:0 6px 0 #543848}
+.face{font-size:72px;margin:12px 0;animation:bob 1.2s ease-in-out infinite alternate}
+.biglove{font-size:54px;animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
+.answer{font-size:29px;font-weight:900;line-height:1.45;margin:12px 0 20px}
+.next{font-size:14px;color:#a05d79;margin-top:10px}
+.hidden{display:none!important}
+.heart{position:fixed;z-index:9;pointer-events:none;font-size:24px;animation:fly 1.5s ease-out forwards}
+@keyframes bob{to{transform:translateY(-8px) rotate(3deg)}}
+@keyframes pop{0%{transform:scale(.2)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+@keyframes fly{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-55vh) rotate(30deg) scale(1.5);opacity:0}}
+@media(max-height:680px){.device{min-height:540px}.screen{min-height:340px}h1{font-size:25px;margin-bottom:24px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="device">
+<div class="screen">
+<div id="ask">
+<div class="pixel">♡ MESSAGE FOR YOU ♡</div>
+<h1>妳是不是在想我了？</h1>
+<div class="buttons">
+<button class="yes" id="yes">❤️ 好想好想你</button>
+<button class="no" id="no">🤔 我才沒有</button>
+</div>
+</div>
+<div id="reply" class="hidden">
+<div class="biglove">❤️❤️</div>
+<div class="answer">我也很想妳哦</div>
+<div class="face">(˶˃ ᵕ ˂˶)♡</div>
+<div class="next">既然想我了……<br>那要不要跟我約會？ 💌</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+const no=document.getElementById('no'),yes=document.getElementById('yes'),ask=document.getElementById('ask'),reply=document.getElementById('reply');
+const lines=['😗 真的沒有啦','🙄 你少臭美','😳 ……可能一點點','🫣 好啦有一點','🥺 你很煩欸','😤 我就是不按','💗 好想好想你'];
+let i=0,scale=1;
+no.addEventListener('click',e=>{e.stopPropagation();no.textContent=lines[Math.min(i,lines.length-1)];i++;scale=Math.min(1.42,scale+.07);yes.style.transform='scale('+scale+')';if(i>=lines.length){no.style.opacity='.45';no.style.transform='scale(.88)'}});
+yes.addEventListener('click',()=>{ask.classList.add('hidden');reply.classList.remove('hidden');for(let j=0;j<18;j++)setTimeout(()=>heart(),j*55)});
+function heart(){const h=document.createElement('div');h.className='heart';h.textContent=Math.random()>.3?'💗':'💕';h.style.left=(10+Math.random()*80)+'vw';h.style.top=(65+Math.random()*25)+'vh';h.style.animationDuration=(1+Math.random())+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),2100)}
+document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});
+</script>
+</body></html>

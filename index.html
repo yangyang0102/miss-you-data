@@ -37,7 +37,7 @@ button{font:900 22px/1.3 inherit;border:0;border-radius:19px;padding:13px 14px;m
 button:active{transform:translateY(4px);box-shadow:0 0 0 #44394a}
 .primary{background:linear-gradient(145deg,#8969a0,#755689);color:#fff}
 .alt{background:#f7f2fa;box-shadow:0 3px 0 #cdbed6,0 7px 15px #493a5a10}
-.back-row{width:100%;display:flex;justify-content:flex-start;margin-top:13px}.back-btn{min-height:0!important;padding:8px 11px!important;font-size:13px!important;font-weight:800!important;border:0!important;border-radius:12px!important;background:transparent!important;color:#8a7398!important;box-shadow:none!important;transform:rotate(-1deg)}.back-btn:active{transform:translateY(1px) rotate(-1deg)!important}.feedback{min-height:42px;margin-top:14px;padding:0 5px;font-size:16px;font-weight:850;line-height:1.55;color:#765487}
+.feedback{min-height:42px;margin-top:14px;padding:0 5px;font-size:16px;font-weight:850;line-height:1.55;color:#765487}
 .chat-stack{display:grid;gap:13px;margin:5px 0 18px;text-align:left}
 .chat{position:relative;width:max-content;max-width:88%;padding:13px 16px;background:#fff;border:1px solid #e1dce4;border-radius:7px 17px 17px 7px;box-shadow:0 4px 13px #493a5a12;font-size:17px;font-weight:750;line-height:1.5}
 .chat:before{content:"";position:absolute;left:-7px;top:16px;width:13px;height:13px;background:#fff;border-left:1px solid #e1dce4;border-bottom:1px solid #e1dce4;transform:rotate(45deg)}
@@ -80,89 +80,68 @@ button:active{transform:translateY(4px);box-shadow:0 0 0 #44394a}
 <script>
 const screen=document.getElementById('screen'),progress=document.getElementById('progress');
 let step=0;
-const total=12;
+const total=13;
 function dots(){progress.innerHTML='';for(let i=0;i<total;i++){let d=document.createElement('i');d.className='dot'+(i<=step?' on':'');progress.appendChild(d)}}
-function render(html){
-  screen.innerHTML='<div class="fade">'+html+'</div>';
-  screen.scrollTop=0;dots();
-  if(step>0&&!backUsed){
-    const row=document.createElement('div');row.className='back-row';
-    row.appendChild(btn('← 等一下，我要回去看一下 👀',goBack,'back-btn'));
-    screen.querySelector('.fade').appendChild(row);
-  }
-}
+function render(html){screen.innerHTML='<div class="fade">'+html+'</div>';screen.scrollTop=0;dots()}
 function btn(label,fn,cls='primary'){const b=document.createElement('button');b.className=cls;b.innerHTML=label;b.onclick=fn;return b}
 function set(html,buttons=[]){render(html+'<div class="buttons" id="buttons"></div>');const box=document.getElementById('buttons');buttons.forEach(x=>box.appendChild(btn(x[0],x[1],x[2]||'primary')))}
-function next(fn){
-  if(!navigatingBack){previousView=currentView;backUsed=false;}
-  step++; currentView=fn; fn();
-}
-function goBack(){
-  if(backUsed||!previousView)return;
-  const target=previousView;
-  backUsed=true;
-  navigatingBack=true;
-  step=Math.max(0,step-1);
-  currentView=target;
-  target();
-  navigatingBack=false;
-}
-function intro(){currentView=intro;
+function next(fn){step++;fn()}
+function intro(){
 set('<svg class="sketch" viewBox="0 0 120 90"><path d="M18 66c17-28 26-42 39-42 14 0 11 27 23 27 8 0 12-12 22-27M13 70c22 5 61 7 94-1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M91 17l11 7-10 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="kicker">今天換個方式</div><div class="sticker wiggle">📌 今日公告</div><div class="play-title">今天不寫<br><span class="scribble">小作文</span>了。</div><p>有些事情光靠文字講，好像還是不太容易說清楚。</p><p>所以今天換個方式。</p><div class="big">帶妳進來我的腦袋逛一下。🧠</div><p class="soft">先說好——裡面東西有點多，問題也有點多。<br>請不要亂跑。😂</p>',[['好啦，帶路 🙄',()=>next(opening)]])
 }
-function opening(){currentView=opening;
+function opening(){
 set('<div class="kicker">先申訴一下</div><h1>我後來發現一件事。</h1><p>妳好像常常覺得……</p><div class="huge">我在挑釁妳。</div>',[['難道不是嗎？',()=>next(appeal)]])
 }
-function appeal(){currentView=appeal;
+function appeal(){
 set('<svg class="comic-face bob" viewBox="0 0 140 110"><path d="M30 54c0-27 18-43 41-43 28 0 43 19 40 45-2 22-19 40-42 40-25 0-39-18-39-42Z" fill="#eadcf1" stroke="#594264" stroke-width="4"/><path d="M48 48l13-6M89 42l12 6M55 62c5 5 23 5 29-1" fill="none" stroke="#594264" stroke-width="4" stroke-linecap="round"/><circle cx="57" cy="49" r="3" fill="#594264"/><circle cx="94" cy="49" r="3" fill="#594264"/><path d="M18 23l12 9M119 20l-10 11M11 60h15M126 58h-14" stroke="#9d7eae" stroke-width="4" stroke-linecap="round"/></svg><div class="huge">蛤？？？？</div><p>等一下。</p><div class="big">我覺得這件事情，<br>我有必要申訴一下。😂</div>',[['准你申訴',()=>next(herView)]])
 }
-function herView(){currentView=herView;
+function herView(){
 set('<div class="kicker">妳看到的我</div><div class="chat-stack"><div class="chat">可是為什麼？</div><div class="chat">那如果不是這樣呢？</div><div class="chat">可是妳剛才不是說……</div><div class="chat">所以妳真正介意的是哪裡？</div></div><p>好。我站在妳的位置看了一次……</p><div class="big">幹。<br>確實滿像在挑釁的。😂</div>',[['你終於知道了？',()=>next(translate)]])
 }
-function translate(){currentView=translate;
+function translate(){
 set('<div class="kicker">歡迎進入我的腦袋</div><h1>但這些話，在我腦袋裡其實有另一個翻譯。</h1><div class="path"><div>「為什麼？」<br><strong>＝ 這裡我還沒理解</strong></div><div>「妳剛才不是說……？」<br><strong>＝ 等等，有兩塊拼不起來</strong></div><div>「那如果換一種情況呢？」<br><strong>＝ 我是不是漏掉其他可能</strong></div><div>「妳真正介意的是什麼？」<br><strong>＝ 我想知道妳真正的感受</strong></div></div><p>我不是一直在找妳的漏洞。</p><div class="big">我是在慢慢拼出——<br>「原來妳是這樣想的。」</div>',[['那情緒呢？🤨',()=>next(emotion)]])
 }
-function emotion(){currentView=emotion;
+function emotion(){
 set('<div class="kicker">兩條線可以一起跑</div><div class="two"><div class="card">❤️<br>妳現在不舒服<br>我在意</div><div class="card">🧠<br>事情為什麼這樣<br>我也想理解</div></div><div class="big">這兩件事在我這裡，<br>可以同時存在。</div><p>我可以關心妳、在意妳現在的感受。</p><p>但如果還有地方沒理解……</p><div class="quote">我的腦袋還是會：<br>「所以……到底為什麼？🤨」</div><p><strong>關心妳，不代表我必須停止思考。<br>想把事情理解清楚，也不代表我不在乎妳的感受。</strong></p>',[['所以你一直問，是因為？',()=>next(quizWhy)]])
 }
-function quizWhy(){currentView=quizWhy;
+function quizWhy(){
 render('<div class="kicker">小測驗</div><h1>如果我一直問妳問題，最可能是因為？</h1><div class="buttons" id="q"></div><div class="feedback" id="fb">選一個。😈</div>');
 const q=document.getElementById('q'),fb=document.getElementById('fb');
 [['A｜我要證明妳錯','❌ 不是啦，我到底為什麼非得證明妳錯不可😂'],['B｜我要贏','❌ 我們是在談感情，不是在打辯論賽冠軍。'],['C｜我還沒理解','ok'],['D｜我要開始挑釁妳 😈','❌ ？？？？？ 妳對我的誤會是不是有點深。']].forEach(([l,r])=>{
  q.appendChild(btn(l,()=>{if(r==='ok'){fb.innerHTML='✔️ <strong>叮咚。終於有人聽懂我的腦袋了。</strong>';[...q.children].forEach(x=>x.disabled=true);setTimeout(()=>next(questionStorm),850)}else{fb.textContent=r}},l.startsWith('C')?'primary':'alt'))
 })
 }
-function questionStorm(){currentView=questionStorm;
+function questionStorm(){
 set('<div class="kicker">問題會自己繁殖</div><p>很多時候，我不是已經有答案才問妳。</p><div class="big">就是因為我沒有答案，<br>我才一直問。</div><div class="storm"><span class="bubble">為什麼？</span><span class="bubble">那如果呢？</span><span class="bubble">等等等等</span><span class="bubble">可是剛剛…</span><span class="bubble">還有另一種吧？</span><span class="bubble">所以重點是？</span></div><div class="sticker wiggle">⚠️ 問題正在自行繁殖</div><p><strong>歡迎來到我的腦袋。</strong></p><p class="soft">很吵，我知道。😂</p>',[['那如果真的有問題呢？',()=>next(problem)]])
 }
-function problem(){currentView=problem;
+function problem(){
 render('<div class="kicker">如果我們真的有問題</div><h1>我比較可能怎麼做？</h1><div class="buttons" id="q2"></div><div class="feedback" id="fb2">這題應該會了吧？😂</div>');
 const q=document.getElementById('q2'),fb=document.getElementById('fb2');
 [['A｜突然冷掉，讓妳自己猜','❌ 這也太折磨人了吧。'],['B｜消失','❌ 我人是有這麼難找嗎？😂'],['C｜悶著不講','❌ 悶著我自己先受不了。'],['D｜跑來問妳十萬個為什麼','ok']].forEach(([l,r])=>q.appendChild(btn(l,()=>{if(r==='ok'){fb.innerHTML='✔️ <strong>恭喜。妳已經開始會使用我了。😂</strong>';[...q.children].forEach(x=>x.disabled=true);setTimeout(()=>next(communication),900)}else fb.textContent=r},l.startsWith('D')?'primary':'alt')))
 }
-function communication(){currentView=communication;
+function communication(){
 set('<div class="kicker">我比較相信這件事</div><p>其實我一直覺得——</p><div class="big">感情裡很有殺傷力的東西，<br>是溝通。</div><p>因為真的把話說開，有時候會碰到不想碰的問題、聽見不一定想聽的答案，甚至會難受。</p><div class="big">但感情裡很溫柔的東西，<br>也一樣是溝通。</div><p>因為我願意把問題告訴妳，也願意聽妳告訴我，我哪裡讓妳不舒服。</p><div class="quote">比起讓妳猜我怎麼了，<br><strong>我更希望我們可以直接告訴彼此「我怎麼了」。</strong></div><p class="soft">把問題說出來，不一定是在破壞關係。<br>有時候，是因為還想把關係好好放在心上。</p>',[['那……新鮮感呢？',()=>next(fresh)]])
 }
-function fresh(){currentView=fresh;
+function fresh(){
 set('<div class="kicker">新鮮感？</div><div class="play-title">妳是不是有點<br><span class="scribble">低估我的腦袋</span>？</div><div class="brain-stage chaos"><div class="thought t1">欸我想到一個東西</div><div class="thought t2">我們去這裡！</div><div class="thought t3">等等這個很好玩</div><div class="thought t4">如果反過來呢？</div><div class="thought t5">我突然想研究這個</div><div class="thought t6">走啦走啦！</div><div class="thought t7">欸妳看這個</div><div class="thought t8">不然我們試試？</div><div class="thought t9">我有個怪點子</div><div class="thought t10">等一下我查一下</div><div class="thought t11">這個可以欸！</div><div class="thought t12">突然想到…</div><div class="thought t13">欸欸欸先聽我說</div><div class="thought t14">又岔出去一下😂</div><svg class="brain-svg pulse" viewBox="0 0 160 130" aria-hidden="true"><path d="M78 110c-8 8-24 4-27-9-13 3-25-9-19-22-13-7-10-27 3-31-5-15 11-28 25-21 6-15 29-14 35 1 13-7 29 5 25 20 15 5 17 26 4 34 6 15-9 28-23 23-5 13-22 15-29 6Z" fill="#d8b7e8" stroke="#594264" stroke-width="4"/><circle cx="58" cy="65" r="4" fill="#594264"/><circle cx="100" cy="65" r="4" fill="#594264"/><path d="M61 86c10 8 27 8 37-1" fill="none" stroke="#594264" stroke-width="4" stroke-linecap="round"/><path d="M80 31v65M57 39c13 3 17 12 12 23M103 38c-13 4-17 13-11 23" fill="none" stroke="#765487" stroke-width="3" stroke-linecap="round"/></svg></div><div class="big">我每天自己就已經很新鮮了。😂</div>',[['你真的很吵 🙄',()=>next(freshDeep)]])
 }
-function freshDeep(){currentView=freshDeep;
+function freshDeep(){
 set('<svg class="mini-heart" viewBox="0 0 64 64"><path d="M32 53S10 40 10 23c0-12 16-16 22-5 6-11 22-7 22 5 0 17-22 30-22 30Z" fill="#eadcf1" stroke="#765487" stroke-width="3"/></svg><div class="kicker">但認真說</div><p>我一直覺得，新鮮感不是一直換不同的人，去重新體驗同樣的開始。</p><div class="big">而是跟同一個人，<br>一起體驗很多很多的第一次。</div><p>第一次一起去某個地方。<br>第一次一起做一件很蠢的事。<br>第一次發現彼此沒看過的一面。<br>第一次有摩擦。<br>第一次慢慢學會怎麼理解對方。</p><p>而且我知道，我們好像都希望自己對彼此來說，<strong>是那個特別的人。</strong></p><div class="quote">不是把以前的故事，換一個人再演一次。</div><div class="big">我比較想跟妳，<br>寫一個以前沒有過的故事。</div>',[['那什麼叫「特別」？',()=>next(special)]])
 }
-function special(){currentView=special;
+function special(){
 set('<svg class="comic-face bob" viewBox="0 0 150 105"><circle cx="48" cy="45" r="19" fill="#d8b7e8" stroke="#594264" stroke-width="3"/><circle cx="103" cy="45" r="19" fill="#eadcf1" stroke="#594264" stroke-width="3"/><circle cx="42" cy="43" r="2.5" fill="#594264"/><circle cx="54" cy="43" r="2.5" fill="#594264"/><path d="M42 53c5 4 9 4 13 0" fill="none" stroke="#594264" stroke-width="2.5" stroke-linecap="round"/><circle cx="97" cy="43" r="2.5" fill="#594264"/><circle cx="109" cy="43" r="2.5" fill="#594264"/><path d="M97 53c5 4 9 4 13 0M66 44h18" fill="none" stroke="#594264" stroke-width="2.5" stroke-linecap="round"/><path d="M69 20c3-7 12-7 15 0 3-7 12-7 15 0 0 10-15 18-15 18S69 30 69 20Z" fill="#e8bfdc" stroke="#765487" stroke-width="2"/><path d="M27 91c4-20 39-20 43 0M81 91c4-20 39-20 43 0" fill="#f4edf7" stroke="#594264" stroke-width="3"/></svg><div class="kicker">我說的特別</div><p>不是「以前做過的事，以後全部不能再做」。</p><p>同樣一個地方、同樣一件事情，跟不同的人，本來就會留下完全不同的故事。</p><div class="big">特別，不是這件事情我人生第一次做。</div><div class="huge">而是這一次，<br>是我們。</div><p>我不想複製以前的關係。</p><p><strong>我想知道「我們」會長成什麼樣子。</strong></p>',[['所以……我現在懂了嗎？😈',()=>next(finalQuiz)]])
 }
-function finalQuiz(){currentView=finalQuiz;
+function finalQuiz(){
 render('<div class="kicker">入門測驗</div><h1>最後一題。</h1><p>如果我又開始問：「為什麼？」</p><div class="buttons" id="fq"></div><div class="feedback" id="ff">請謹慎作答。😈</div>');
 const q=document.getElementById('fq'),f=document.getElementById('ff');
 q.appendChild(btn('A｜他又要挑釁我了',()=>f.textContent='❌ 前面白看了是不是？？？？😂','alt'));
 q.appendChild(btn('B｜這傢伙大概又有地方沒想懂',()=>{f.innerHTML='✔️ <strong>學得很快嘛。</strong>';[...q.children].forEach(x=>x.disabled=true);setTimeout(()=>next(ending),850)},'primary'))
 }
-function ending(){currentView=ending;
+function ending(){
 set('<svg class="comic-face" viewBox="0 0 150 105"><rect x="12" y="10" width="52" height="29" rx="12" fill="#fff" stroke="#765487" stroke-width="2.5"/><path d="M25 39l-7 9 15-8" fill="#fff" stroke="#765487" stroke-width="2.5"/><rect x="86" y="18" width="52" height="29" rx="12" fill="#eadcf1" stroke="#765487" stroke-width="2.5"/><path d="M124 47l8 8-17-7" fill="#eadcf1" stroke="#765487" stroke-width="2.5"/><circle cx="45" cy="72" r="13" fill="#d8b7e8" stroke="#594264" stroke-width="3"/><circle cx="106" cy="72" r="13" fill="#eadcf1" stroke="#594264" stroke-width="3"/><path d="M59 76c12 7 22 7 34 0" fill="none" stroke="#9d7eae" stroke-width="3" stroke-dasharray="4 4"/></svg><div class="kicker">最後一件事</div><p>讓妳慢慢理解我，</p><div class="big">不代表只有妳需要理解我。</div><p>因為我也在學著理解妳。</p><p>我會慢慢學著知道，妳什麼時候想跟我一起把事情搞懂，什麼時候其實只是希望我先聽妳說。</p><p>我也會學著讓我的「為什麼」，<strong>聽起來不像在質問妳。😂</strong></p><div class="quote">所以這不是：<br>「這就是我，妳自己適應一下。」</div><div class="big">而是——<br>「這是我，我想讓妳更了解。」<br><br>「那妳呢？我也想慢慢了解。」</div><p><strong>我們不用用一樣的方式思考。<br>只要慢慢學會，怎麼聽懂彼此就好了。</strong></p>',[['那就再了解彼此一點吧',()=>next(last)]])
 }
-function last(){currentView=last;
-set('<div class="kicker">TO BE CONTINUED...</div><div class="huge">未完待續。</div><p>畢竟……</p><div class="big">我明天八成又會想到新的東西。</div><div class="huge">😂</div>',[['再逛一次',()=>{step=0;previousView=null;backUsed=false;intro()},'alt']])
+function last(){
+set('<div class="kicker">TO BE CONTINUED...</div><div class="huge">未完待續。</div><p>畢竟……</p><div class="big">我明天八成又會想到新的東西。</div><div class="huge">😂</div>',[['所以，結束了嗎？🤨',()=>next(tease)]])
 }
 intro();
 document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});

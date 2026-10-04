@@ -27,11 +27,11 @@ strong{color:#67427f}
 .big{font-size:25px;font-weight:900;line-height:1.55;margin:12px 0}
 .huge{font-size:38px;font-weight:950;line-height:1.25;margin:12px 0}
 .soft{color:#74677d;font-size:15px}
-.quote{padding:16px;border-radius:18px;background:#f5eff9;border:1px solid #dfd2e8;margin:8px 0;font-weight:800;line-height:1.6}
+.quote{padding:16px;border-radius:18px;background:#f5eff9;border:1px solid #dfd2e8;margin:8px 0;font-weight:800;line-height:1.6}\n.chat-stack{display:grid;gap:12px;margin:8px 0 16px;text-align:left}.chat{position:relative;width:max-content;max-width:88%;padding:13px 16px;background:#fff;border:1.5px solid #ded7e3;border-radius:8px 16px 16px 8px;box-shadow:0 3px 10px #493a5a12;font-size:17px;font-weight:800;line-height:1.45}.chat:before{content:"";position:absolute;left:-8px;top:15px;width:15px;height:15px;background:#fff;border-left:1.5px solid #ded7e3;border-bottom:1.5px solid #ded7e3;transform:rotate(45deg)}.chat:nth-child(2){margin-left:18px}.chat:nth-child(3){margin-left:5px}.chat:nth-child(4){margin-left:26px}.doodle{width:62px;height:62px;margin:0 auto 8px;color:#765487}.brain-stage{position:relative;height:265px;margin:2px 0 6px}.brain-svg{position:absolute;width:118px;height:94px;left:50%;top:88px;transform:translateX(-50%);filter:drop-shadow(0 6px 5px #5d456f22)}.thought{position:absolute;padding:8px 11px;background:#fff;border:1.5px solid #cdbdd8;border-radius:14px;box-shadow:0 3px 0 #dfd2e8;font-size:12px;font-weight:850;white-space:nowrap;animation:floatIn .5s both}.thought:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#d7c6e1}.t1{left:0;top:18px;transform:rotate(-5deg);animation-delay:.05s}.t2{right:0;top:6px;transform:rotate(4deg);animation-delay:.12s}.t3{left:7px;top:91px;transform:rotate(3deg);animation-delay:.19s}.t4{right:0;top:80px;transform:rotate(-4deg);animation-delay:.26s}.t5{left:0;bottom:16px;transform:rotate(-3deg);animation-delay:.33s}.t6{right:4px;bottom:18px;transform:rotate(5deg);animation-delay:.40s}.t1:after,.t3:after,.t5:after{right:-11px;bottom:-5px}.t2:after,.t4:after,.t6:after{left:-11px;bottom:-5px}@keyframes floatIn{from{opacity:0;transform:translateY(10px) scale(.85)}to{opacity:1}}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
 .card{padding:15px 10px;border:2px solid #403548;border-radius:18px;background:#faf7fc;font-weight:800;line-height:1.5}
 .buttons{width:100%;display:grid;gap:10px;margin-top:18px}
-button{font:800 16px/1.35 inherit;border:2px solid #403548;border-radius:16px;padding:13px 12px;min-height:52px;cursor:pointer;background:#fff;color:#30283a;box-shadow:0 4px 0 #403548;transition:.12s}
+button{font:850 19px/1.4 inherit;border:2px solid #403548;border-radius:17px;padding:15px 14px;min-height:58px;cursor:pointer;background:#fff;color:#30283a;box-shadow:0 4px 0 #403548;transition:.12s}
 button:active{transform:translateY(4px);box-shadow:0 0 0 #403548}
 .primary{background:#7b5c91;color:white}
 .alt{background:#f5eff9}
@@ -45,7 +45,7 @@ button:active{transform:translateY(4px);box-shadow:0 0 0 #403548}
 .pop{animation:pop .35s cubic-bezier(.2,1.5,.4,1) both}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes pop{from{opacity:0;transform:scale(.75)}to{opacity:1;transform:scale(1)}}
-@media(max-height:680px){.device{height:96dvh}.screen{padding:18px 16px}h1{font-size:23px}p{font-size:15px}.big{font-size:21px}button{min-height:46px;padding:10px}}
+@media(max-height:680px){.device{height:96dvh}.screen{padding:18px 16px}h1{font-size:23px}p{font-size:15px}.big{font-size:21px}button{min-height:52px;padding:12px;font-size:17px}.brain-stage{height:225px}.brain-svg{top:72px;width:100px}.thought{font-size:11px;padding:7px 9px}}
 </style>
 </head>
 <body>
@@ -74,7 +74,7 @@ function appeal(){
 set('<div class="huge">？？？？？？</div><p>等一下。</p><div class="big">我覺得這件事情，<br>我有必要申訴一下。😂</div>',[['准你申訴',()=>next(herView)]])
 }
 function herView(){
-set('<div class="kicker">02 · 妳看到的我</div><div class="quote">「可是為什麼？」</div><div class="quote">「那如果不是這樣呢？」</div><div class="quote">「可是妳剛才不是說……」</div><div class="quote">「所以妳真正介意的是哪裡？」</div><p>好。我站在妳的位置看了一次……</p><div class="big">幹。<br>確實滿像在挑釁的。😂</div>',[['你終於知道了？',()=>next(translate)]])
+set('<div class="kicker">02 · 妳看到的我</div><div class="chat-stack"><div class="chat">可是為什麼？</div><div class="chat">那如果不是這樣呢？</div><div class="chat">可是妳剛才不是說……</div><div class="chat">所以妳真正介意的是哪裡？</div></div><p>好。我站在妳的位置看了一次……</p><div class="big">幹。<br>確實滿像在挑釁的。😂</div>',[['你終於知道了？',()=>next(translate)]])
 }
 function translate(){
 set('<div class="kicker">03 · 歡迎進入我的腦袋</div><h1>但這些話，在我腦袋裡其實有另一個翻譯。</h1><div class="path"><div>「為什麼？」<br><strong>＝ 這裡我還沒理解</strong></div><div>「妳剛才不是說……？」<br><strong>＝ 等等，有兩塊拼不起來</strong></div><div>「那如果換一種情況呢？」<br><strong>＝ 我是不是漏掉其他可能</strong></div><div>「妳真正介意的是什麼？」<br><strong>＝ 我想知道妳真正的感受</strong></div></div><p>我不是一直在找妳的漏洞。</p><div class="big">我是在慢慢拼出——<br>「原來妳是這樣想的。」</div>',[['那情緒呢？🤨',()=>next(emotion)]])
@@ -101,7 +101,7 @@ function communication(){
 set('<div class="kicker">08 · 我比較相信這件事</div><p>其實我一直覺得——</p><div class="big">感情裡很有殺傷力的東西，<br>是溝通。</div><p>因為真的把話說開，有時候會碰到不想碰的問題、聽見不一定想聽的答案，甚至會難受。</p><div class="big">但感情裡很溫柔的東西，<br>也一樣是溝通。</div><p>因為我願意把問題告訴妳，也願意聽妳告訴我，我哪裡讓妳不舒服。</p><div class="quote">比起讓妳猜我怎麼了，<br><strong>我更希望我們可以直接告訴彼此「我怎麼了」。</strong></div><p class="soft">把問題說出來，不一定是在破壞關係。<br>有時候，是因為還想把關係好好放在心上。</p>',[['那……新鮮感呢？',()=>next(fresh)]])
 }
 function fresh(){
-set('<div class="kicker">09 · 新鮮感？</div><h1>妳是不是有點低估我的腦袋？</h1><div class="bubbles"><span class="bubble">欸我想到一個東西</span><span class="bubble">我們去這裡</span><span class="bubble">等等這個很好玩</span><span class="bubble">如果反過來呢？</span><span class="bubble">我突然想研究這個</span><span class="bubble">欸欸欸妳看</span><span class="bubble">走啦走啦</span></div><div class="big">我每天自己就已經很新鮮了。😂</div>',[['你真的很吵 🙄',()=>next(freshDeep)]])
+set('<div class="kicker">09 · 新鮮感？</div><h1>妳是不是有點低估我的腦袋？</h1><div class="brain-stage"><div class="thought t1">欸我想到一個東西</div><div class="thought t2">我們去這裡！</div><div class="thought t3">等等這個很好玩</div><div class="thought t4">如果反過來呢？</div><div class="thought t5">我突然想研究這個</div><div class="thought t6">走啦走啦！</div><svg class="brain-svg" viewBox="0 0 160 130" aria-hidden="true"><path d="M78 110c-8 8-24 4-27-9-13 3-25-9-19-22-13-7-10-27 3-31-5-15 11-28 25-21 6-15 29-14 35 1 13-7 29 5 25 20 15 5 17 26 4 34 6 15-9 28-23 23-5 13-22 15-29 6Z" fill="#d8b7e8" stroke="#594264" stroke-width="4" stroke-linejoin="round"/><path d="M80 31v73M57 39c13 3 17 12 12 23M103 38c-13 4-17 13-11 23M49 69c12-5 21 1 23 12M111 68c-13-4-21 2-23 13M55 96c9-5 16-2 23 6M106 96c-10-5-17-1-24 7" fill="none" stroke="#765487" stroke-width="3" stroke-linecap="round"/></svg></div><div class="big">我每天自己就已經很新鮮了。😂</div>',[['你真的很吵 🙄',()=>next(freshDeep)]])
 }
 function freshDeep(){
 set('<div class="kicker">10 · 但認真說</div><p>我一直覺得，新鮮感不是一直換不同的人，去重新體驗同樣的開始。</p><div class="big">而是跟同一個人，<br>一起體驗很多很多的第一次。</div><p>第一次一起去某個地方。<br>第一次一起做一件很蠢的事。<br>第一次發現彼此沒看過的一面。<br>第一次有摩擦。<br>第一次慢慢學會怎麼理解對方。</p><p>而且我知道，我們好像都希望自己對彼此來說，<strong>是那個特別的人。</strong></p><div class="quote">不是把以前的故事，換一個人再演一次。</div><div class="big">我比較想跟妳，<br>寫一個以前沒有過的故事。</div>',[['那什麼叫「特別」？',()=>next(special)]])

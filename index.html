@@ -143,6 +143,9 @@ set('<svg class="comic-face" viewBox="0 0 150 105"><rect x="12" y="10" width="52
 function last(){
 set('<div class="kicker">TO BE CONTINUED...</div><div class="huge">未完待續。</div><p>畢竟……</p><div class="big">我明天八成又會想到新的東西。</div><div class="huge">😂</div>',[['所以，結束了嗎？🤨',()=>next(tease)]])
 }
+function tease(){
+set('<div class="sticker wiggle">⚠️ 最後補充條款</div><div class="play-title" style="margin-top:22px">我不會故意去<br><span class="scribble">挑釁妳</span>。</div><p>前面講那麼多，這點我會注意。😂</p><div class="big" style="margin-top:22px">但是——</div><div class="huge">調戲妳嘛……</div><div class="big">這個我可不能保證。😜</div><p class="soft">這條不接受申訴，謝謝配合。</p>',[['好喔，你最好是 🙄',()=>{step=0;intro()},'alt']])
+}
 intro();
 document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});
 </script>

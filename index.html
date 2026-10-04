@@ -3,71 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#f5f5f5">
-<meta name="description" content="Mobile page">
-<meta property="og:title" content="Page">
-<meta property="og:description" content="Tap to open">
+<meta name="theme-color" content="#f3edf8">
+<meta name="description" content="今天不寫小作文了。帶妳進來我的腦袋逛一下。">
+<meta property="og:title" content="要不要，再了解我一點？">
+<meta property="og:description" content="今天換個方式，帶妳進來我的腦袋逛一下。">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Page">
-<meta name="twitter:description" content="Tap to open">
-<title>Page</title>
+<title>要不要，再了解我一點？</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;touch-action:manipulation;overscroll-behavior:none}
-body{font-family:"Arial Rounded MT Bold","PingFang TC",system-ui,sans-serif;background:#ffd9e8;color:#4a3040;user-select:none;-webkit-user-select:none}
-body:before{content:"";position:fixed;inset:0;opacity:.18;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:18px 18px;pointer-events:none}
-.wrap{height:100dvh;display:grid;place-items:center;padding:22px}
-.device{position:relative;width:min(92vw,410px);min-height:610px;background:#fff2f7;border:4px solid #543848;border-radius:36px;padding:26px 20px 22px;box-shadow:0 12px 0 #d990ad,0 20px 36px #9d55713a;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
-.device:before{content:"LOVE MODE";position:absolute;top:18px;font:800 11px/1 monospace;letter-spacing:3px;color:#c06b8c}
-.screen{width:100%;background:#fff;border:3px solid #543848;border-radius:24px;min-height:390px;padding:34px 18px 26px;box-shadow:inset 0 0 0 5px #ffd9e8;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.pixel{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:2px;color:#b46a88;margin-bottom:18px}
-h1{font-size:29px;line-height:1.35;margin:0 0 34px}
-.buttons{width:100%;display:grid;gap:14px}
-button{font:800 17px/1.2 inherit;border:3px solid #543848;border-radius:18px;padding:16px 12px;min-height:58px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .12s ease,box-shadow .12s ease}
-button:active{transform:translateY(5px)!important;box-shadow:0 1px 0 #543848!important}
-.yes{background:#ff78aa;color:white;box-shadow:0 6px 0 #543848}
-.no{background:#fff6fa;color:#543848;box-shadow:0 6px 0 #543848}
-.face{font-size:72px;margin:12px 0;animation:bob 1.2s ease-in-out infinite alternate}
-.biglove{font-size:54px;animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
-.answer{font-size:29px;font-weight:900;line-height:1.45;margin:12px 0 20px}
-.next{font-size:14px;color:#a05d79;margin-top:10px}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
+body{font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif;background:#e9e0f2;color:#30283a;user-select:none;-webkit-user-select:none}
+body:before{content:"";position:fixed;inset:0;opacity:.22;background-image:radial-gradient(#fff 1.2px,transparent 1.2px);background-size:18px 18px;pointer-events:none}
+.wrap{height:100dvh;display:grid;place-items:center;padding:16px}
+.device{position:relative;width:min(94vw,430px);height:min(92dvh,790px);background:#fbf8ff;border:3px solid #403548;border-radius:34px;padding:18px 15px 15px;box-shadow:0 10px 0 #b7a2c9,0 22px 45px #493a5a30;overflow:hidden}
+.topbar{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 8px 8px;font:800 10px/1 ui-monospace,monospace;letter-spacing:1.4px;color:#8b789a}
+.progress{display:flex;gap:5px}.dot{width:6px;height:6px;border-radius:50%;background:#d9cee2}.dot.on{background:#7b5c91}
+.screen{height:calc(100% - 34px);background:#fff;border:2px solid #403548;border-radius:24px;padding:24px 20px;display:flex;flex-direction:column;justify-content:center;text-align:center;overflow:auto;scrollbar-width:none}
+.screen::-webkit-scrollbar{display:none}
+.kicker{font:800 11px/1.4 ui-monospace,monospace;letter-spacing:2px;color:#9279a3;margin-bottom:14px}
+h1{font-size:27px;line-height:1.35;margin:0 0 18px}
+p{font-size:17px;line-height:1.75;margin:8px 0}
+strong{color:#67427f}
+.big{font-size:25px;font-weight:900;line-height:1.55;margin:12px 0}
+.huge{font-size:38px;font-weight:950;line-height:1.25;margin:12px 0}
+.soft{color:#74677d;font-size:15px}
+.quote{padding:16px;border-radius:18px;background:#f5eff9;border:1px solid #dfd2e8;margin:8px 0;font-weight:800;line-height:1.6}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.card{padding:15px 10px;border:2px solid #403548;border-radius:18px;background:#faf7fc;font-weight:800;line-height:1.5}
+.buttons{width:100%;display:grid;gap:10px;margin-top:18px}
+button{font:800 16px/1.35 inherit;border:2px solid #403548;border-radius:16px;padding:13px 12px;min-height:52px;cursor:pointer;background:#fff;color:#30283a;box-shadow:0 4px 0 #403548;transition:.12s}
+button:active{transform:translateY(4px);box-shadow:0 0 0 #403548}
+.primary{background:#7b5c91;color:white}
+.alt{background:#f5eff9}
+.feedback{min-height:42px;margin-top:12px;font-weight:850;line-height:1.5;color:#765487}
+.bubbles{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:12px 0}
+.bubble{padding:8px 11px;border-radius:999px;background:#f2ebf7;border:1px solid #d6c6e0;font-size:13px;font-weight:750;animation:pop .35s both}
+.path{display:grid;gap:8px;margin:12px 0}.path div{padding:10px;border-radius:14px;background:#f5eff9;font-weight:800}
+.arrow{font-size:18px;color:#8a739a}
 .hidden{display:none!important}
-.heart{position:fixed;z-index:9;pointer-events:none;font-size:24px;animation:fly 1.5s ease-out forwards}
-@keyframes bob{to{transform:translateY(-8px) rotate(3deg)}}
-@keyframes pop{0%{transform:scale(.2)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
-@keyframes fly{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-55vh) rotate(30deg) scale(1.5);opacity:0}}
-@media(max-height:680px){.device{min-height:540px}.screen{min-height:340px}h1{font-size:25px;margin-bottom:24px}}
+.fade{animation:fade .38s ease both}
+.pop{animation:pop .35s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.75)}to{opacity:1;transform:scale(1)}}
+@media(max-height:680px){.device{height:96dvh}.screen{padding:18px 16px}h1{font-size:23px}p{font-size:15px}.big{font-size:21px}button{min-height:46px;padding:10px}}
 </style>
 </head>
 <body>
 <main class="wrap">
 <section class="device">
-<div class="screen">
-<div id="ask">
-<div class="pixel">♡ MESSAGE FOR YOU ♡</div>
-<h1>妳是不是在想我了？</h1>
-<div class="buttons">
-<button class="yes" id="yes">❤️ 好想好想你</button>
-<button class="no" id="no">🤔 我才沒有</button>
-</div>
-</div>
-<div id="reply" class="hidden">
-<div class="biglove">❤️❤️</div>
-<div class="answer">我也很想妳哦</div>
-<div class="face">(˶˃ ᵕ ˂˶)♡</div>
-<div class="next">既然想我了……<br>那要不要跟我約會？ 💌</div>
-</div>
-</div>
+  <div class="topbar"><span>INSIDE MY HEAD</span><div class="progress" id="progress"></div></div>
+  <div class="screen" id="screen"></div>
 </section>
 </main>
 <script>
-const no=document.getElementById('no'),yes=document.getElementById('yes'),ask=document.getElementById('ask'),reply=document.getElementById('reply');
-const lines=['😗 真的沒有啦','🙄 你少臭美','😳 ……可能一點點','🫣 好啦有一點','🥺 你很煩欸','😤 我就是不按','💗 好想好想你'];
-let i=0,scale=1;
-no.addEventListener('click',e=>{e.stopPropagation();no.textContent=lines[Math.min(i,lines.length-1)];i++;scale=Math.min(1.42,scale+.07);yes.style.transform='scale('+scale+')';if(i>=lines.length){no.style.opacity='.45';no.style.transform='scale(.88)'}});
-yes.addEventListener('click',()=>{ask.classList.add('hidden');reply.classList.remove('hidden');for(let j=0;j<18;j++)setTimeout(()=>heart(),j*55)});
-function heart(){const h=document.createElement('div');h.className='heart';h.textContent=Math.random()>.3?'💗':'💕';h.style.left=(10+Math.random()*80)+'vw';h.style.top=(65+Math.random()*25)+'vh';h.style.animationDuration=(1+Math.random())+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),2100)}
+const screen=document.getElementById('screen'),progress=document.getElementById('progress');
+let step=0;
+const total=12;
+function dots(){progress.innerHTML='';for(let i=0;i<total;i++){let d=document.createElement('i');d.className='dot'+(i<=step?' on':'');progress.appendChild(d)}}
+function render(html){screen.innerHTML='<div class="fade">'+html+'</div>';screen.scrollTop=0;dots()}
+function btn(label,fn,cls='primary'){const b=document.createElement('button');b.className=cls;b.innerHTML=label;b.onclick=fn;return b}
+function set(html,buttons=[]){render(html+'<div class="buttons" id="buttons"></div>');const box=document.getElementById('buttons');buttons.forEach(x=>box.appendChild(btn(x[0],x[1],x[2]||'primary')))}
+function next(fn){step++;fn()}
+function intro(){
+set('<div class="kicker">♡ 今天換個方式 ♡</div><h1>今天不寫小作文了。</h1><p>有些事情光靠文字講，好像還是不太容易說清楚。</p><p>所以今天換個方式。</p><div class="big">帶妳進來我的腦袋逛一下。🧠</div><p class="soft">先說好——裡面東西有點多，問題也有點多。<br>請不要亂跑。😂</p>',[['好啦，帶路 🙄',()=>next(opening)]])
+}
+function opening(){
+set('<div class="kicker">01 · 先申訴一下</div><h1>我後來發現一件事。</h1><p>妳好像常常覺得……</p><div class="huge">我在挑釁妳。</div>',[['難道不是嗎？',()=>next(appeal)]])
+}
+function appeal(){
+set('<div class="huge">？？？？？？</div><p>等一下。</p><div class="big">我覺得這件事情，<br>我有必要申訴一下。😂</div>',[['准你申訴',()=>next(herView)]])
+}
+function herView(){
+set('<div class="kicker">02 · 妳看到的我</div><div class="quote">「可是為什麼？」</div><div class="quote">「那如果不是這樣呢？」</div><div class="quote">「可是妳剛才不是說……」</div><div class="quote">「所以妳真正介意的是哪裡？」</div><p>好。我站在妳的位置看了一次……</p><div class="big">幹。<br>確實滿像在挑釁的。😂</div>',[['你終於知道了？',()=>next(translate)]])
+}
+function translate(){
+set('<div class="kicker">03 · 歡迎進入我的腦袋</div><h1>但這些話，在我腦袋裡其實有另一個翻譯。</h1><div class="path"><div>「為什麼？」<br><strong>＝ 這裡我還沒理解</strong></div><div>「妳剛才不是說……？」<br><strong>＝ 等等，有兩塊拼不起來</strong></div><div>「那如果換一種情況呢？」<br><strong>＝ 我是不是漏掉其他可能</strong></div><div>「妳真正介意的是什麼？」<br><strong>＝ 我想知道妳真正的感受</strong></div></div><p>我不是一直在找妳的漏洞。</p><div class="big">我是在慢慢拼出——<br>「原來妳是這樣想的。」</div>',[['那情緒呢？🤨',()=>next(emotion)]])
+}
+function emotion(){
+set('<div class="kicker">04 · 兩條線可以一起跑</div><div class="two"><div class="card">❤️<br>妳現在不舒服<br>我在意</div><div class="card">🧠<br>事情為什麼這樣<br>我也想理解</div></div><div class="big">這兩件事在我這裡，<br>可以同時存在。</div><p>我可以關心妳、在意妳現在的感受。</p><p>但如果還有地方沒理解……</p><div class="quote">我的腦袋還是會：<br>「所以……到底為什麼？🤨」</div><p><strong>關心妳，不代表我必須停止思考。<br>想把事情理解清楚，也不代表我不在乎妳的感受。</strong></p>',[['所以你一直問，是因為？',()=>next(quizWhy)]])
+}
+function quizWhy(){
+render('<div class="kicker">05 · 小測驗</div><h1>如果我一直問妳問題，最可能是因為？</h1><div class="buttons" id="q"></div><div class="feedback" id="fb">選一個。😈</div>');
+const q=document.getElementById('q'),fb=document.getElementById('fb');
+[['A｜我要證明妳錯','❌ 不是啦，我到底為什麼非得證明妳錯不可😂'],['B｜我要贏','❌ 我們是在談感情，不是在打辯論賽冠軍。'],['C｜我還沒理解','ok'],['D｜我要開始挑釁妳 😈','❌ ？？？？？ 妳對我的誤會是不是有點深。']].forEach(([l,r])=>{
+ q.appendChild(btn(l,()=>{if(r==='ok'){fb.innerHTML='✔️ <strong>叮咚。終於有人聽懂我的腦袋了。</strong>';[...q.children].forEach(x=>x.disabled=true);setTimeout(()=>next(questionStorm),850)}else{fb.textContent=r}},l.startsWith('C')?'primary':'alt'))
+})
+}
+function questionStorm(){
+set('<div class="kicker">06 · 問題會自己繁殖</div><p>很多時候，我不是已經有答案才問妳。</p><div class="big">就是因為我沒有答案，<br>我才一直問。</div><div class="bubbles"><span class="bubble">問題 ×1</span><span class="bubble">問題 ×3</span><span class="bubble">問題 ×7</span><span class="bubble">問題 ×18</span></div><div class="huge">🧠💥</div><p><strong>歡迎來到我的腦袋。</strong></p><p class="soft">很吵，我知道。😂</p>',[['那如果真的有問題呢？',()=>next(problem)]])
+}
+function problem(){
+render('<div class="kicker">07 · 如果我們真的有問題</div><h1>我比較可能怎麼做？</h1><div class="buttons" id="q2"></div><div class="feedback" id="fb2">這題應該會了吧？😂</div>');
+const q=document.getElementById('q2'),fb=document.getElementById('fb2');
+[['A｜突然冷掉，讓妳自己猜','❌ 這也太折磨人了吧。'],['B｜消失','❌ 我人是有這麼難找嗎？😂'],['C｜悶著不講','❌ 悶著我自己先受不了。'],['D｜跑來問妳十萬個為什麼','ok']].forEach(([l,r])=>q.appendChild(btn(l,()=>{if(r==='ok'){fb.innerHTML='✔️ <strong>恭喜。妳已經開始會使用我了。😂</strong>';[...q.children].forEach(x=>x.disabled=true);setTimeout(()=>next(communication),900)}else fb.textContent=r},l.startsWith('D')?'primary':'alt')))
+}
+function communication(){
+set('<div class="kicker">08 · 我比較相信這件事</div><p>其實我一直覺得——</p><div class="big">感情裡很有殺傷力的東西，<br>是溝通。</div><p>因為真的把話說開，有時候會碰到不想碰的問題、聽見不一定想聽的答案，甚至會難受。</p><div class="big">但感情裡很溫柔的東西，<br>也一樣是溝通。</div><p>因為我願意把問題告訴妳，也願意聽妳告訴我，我哪裡讓妳不舒服。</p><div class="quote">比起讓妳猜我怎麼了，<br><strong>我更希望我們可以直接告訴彼此「我怎麼了」。</strong></div><p class="soft">把問題說出來，不一定是在破壞關係。<br>有時候，是因為還想把關係好好放在心上。</p>',[['那……新鮮感呢？',()=>next(fresh)]])
+}
+function fresh(){
+set('<div class="kicker">09 · 新鮮感？</div><h1>妳是不是有點低估我的腦袋？</h1><div class="bubbles"><span class="bubble">欸我想到一個東西</span><span class="bubble">我們去這裡</span><span class="bubble">等等這個很好玩</span><span class="bubble">如果反過來呢？</span><span class="bubble">我突然想研究這個</span><span class="bubble">欸欸欸妳看</span><span class="bubble">走啦走啦</span></div><div class="big">我每天自己就已經很新鮮了。😂</div>',[['你真的很吵 🙄',()=>next(freshDeep)]])
+}
+function freshDeep(){
+set('<div class="kicker">10 · 但認真說</div><p>我一直覺得，新鮮感不是一直換不同的人，去重新體驗同樣的開始。</p><div class="big">而是跟同一個人，<br>一起體驗很多很多的第一次。</div><p>第一次一起去某個地方。<br>第一次一起做一件很蠢的事。<br>第一次發現彼此沒看過的一面。<br>第一次有摩擦。<br>第一次慢慢學會怎麼理解對方。</p><p>而且我知道，我們好像都希望自己對彼此來說，<strong>是那個特別的人。</strong></p><div class="quote">不是把以前的故事，換一個人再演一次。</div><div class="big">我比較想跟妳，<br>寫一個以前沒有過的故事。</div>',[['那什麼叫「特別」？',()=>next(special)]])
+}
+function special(){
+set('<div class="kicker">11 · 我說的特別</div><p>不是「以前做過的事，以後全部不能再做」。</p><p>同樣一個地方、同樣一件事情，跟不同的人，本來就會留下完全不同的故事。</p><div class="big">特別，不是這件事情我人生第一次做。</div><div class="huge">而是這一次，<br>是我們。</div><p>我不想複製以前的關係。</p><p><strong>我想知道「我們」會長成什麼樣子。</strong></p>',[['所以……我現在懂了嗎？😈',()=>next(finalQuiz)]])
+}
+function finalQuiz(){
+render('<div class="kicker">12 · 入門測驗</div><h1>最後一題。</h1><p>如果我又開始問：「為什麼？」</p><div class="buttons" id="fq"></div><div class="feedback" id="ff">請謹慎作答。😈</div>');
+const q=document.getElementById('fq'),f=document.getElementById('ff');
+q.appendChild(btn('A｜他又要挑釁我了',()=>f.textContent='❌ 前面白看了是不是？？？？😂','alt'));
+q.appendChild(btn('B｜這傢伙大概又有地方沒想懂',()=>{f.innerHTML='✔️ <strong>學得很快嘛。</strong>';[...q.children].forEach(x=>x.disabled=true);setTimeout(()=>next(ending),850)},'primary'))
+}
+function ending(){
+set('<div class="kicker">♡ 最後一件事 ♡</div><p>讓妳慢慢理解我，</p><div class="big">不代表只有妳需要理解我。</div><p>因為我也在學著理解妳。</p><p>我會慢慢學著知道，妳什麼時候想跟我一起把事情搞懂，什麼時候其實只是希望我先聽妳說。</p><p>我也會學著讓我的「為什麼」，<strong>聽起來不像在質問妳。😂</strong></p><div class="quote">所以這不是：<br>「這就是我，妳自己適應一下。」</div><div class="big">而是——<br>「這是我，我想讓妳更了解。」<br><br>「那妳呢？我也想慢慢了解。」</div><p><strong>我們不用用一樣的方式思考。<br>只要慢慢學會，怎麼聽懂彼此就好了。</strong></p>',[['那就再了解彼此一點吧',()=>next(last)]])
+}
+function last(){
+set('<div class="kicker">TO BE CONTINUED...</div><div class="huge">未完待續。</div><p>畢竟……</p><div class="big">我明天八成又會想到新的東西。</div><div class="huge">😂</div>',[['再逛一次',()=>{step=0;intro()},'alt']])
+}
+intro();
 document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});
 </script>
-</body></html>
+</body>
+</html>
